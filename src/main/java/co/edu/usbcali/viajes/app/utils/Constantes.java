@@ -1,4 +1,4 @@
-package co.edu.usbcali.banco.app.utils;
+package co.edu.usbcali.viajes.app.utils;
 
 /**
  * @author cesarlopez

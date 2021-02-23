@@ -1,9 +1,9 @@
-package co.edu.usbcali.banco.app.repository;
+package co.edu.usbcali.viajes.app.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
-import co.edu.usbcali.banco.app.domain.TipoDestino;
+import co.edu.usbcali.viajes.app.domain.TipoDestino;
 
 /**
  * @author cesarlopez
