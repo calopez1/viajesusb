@@ -1,4 +1,4 @@
-package co.edu.usbcali.banco.app;
+package co.edu.usbcali.viajes.app;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,11 +11,11 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import co.edu.usbcali.banco.app.domain.Destino;
-import co.edu.usbcali.banco.app.domain.TipoDestino;
-import co.edu.usbcali.banco.app.repository.DestinoRepository;
-import co.edu.usbcali.banco.app.repository.TipoDestinoRepository;
-import co.edu.usbcali.banco.app.utils.Constantes;
+import co.edu.usbcali.viajes.app.domain.Destino;
+import co.edu.usbcali.viajes.app.domain.TipoDestino;
+import co.edu.usbcali.viajes.app.repository.DestinoRepository;
+import co.edu.usbcali.viajes.app.repository.TipoDestinoRepository;
+import co.edu.usbcali.viajes.app.utils.Constantes;
 
 @SpringBootApplication
 public class BancoApplication implements CommandLineRunner{
@@ -223,6 +223,7 @@ public class BancoApplication implements CommandLineRunner{
 		destino2.setNombre("San Andrés");
 		destino2.setTipoDestino(tipoDestino);
 		destino2.setUsuCreador("CLOPEZ");
+		
 		
 		lstDestino.add(destino2);
 				
