@@ -6,21 +6,45 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.ColumnResult;
+import javax.persistence.ConstructorResult;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedNativeQueries;
+import javax.persistence.NamedNativeQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.SqlResultSetMapping;
+import javax.persistence.SqlResultSetMappings;
 import javax.persistence.Table;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import co.edu.usbcali.viajes.app.dto.TipoDestinoDTO;
+
 /**
  * @author cesarlopez
  *
  */
+
+@NamedNativeQueries({
+	@NamedNativeQuery(name="TipoDestino.consultarTipoDestinoPorEstado", query="", resultSetMapping = "consultarTipoDestinoPorEstado"),
+})
+
+@SqlResultSetMappings({
+	@SqlResultSetMapping( name="consultarTipoDestinoPorEstado",
+			classes= { @ConstructorResult(targetClass = TipoDestinoDTO.class,
+				columns = {
+						@ColumnResult(name="idTide", type = Integer.class),
+						@ColumnResult(name="codigo", type = String.class),
+						@ColumnResult(name="nombre", type = String.class),
+						@ColumnResult(name="descripcion", type = String.class),
+
+				}) }),		
+})
 
 @Entity
 @Table(name="tipo_destino")
