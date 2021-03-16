@@ -1,9 +1,11 @@
-package co.edu.usbcali.banco.app.repository;
+package co.edu.usbcali.viajes.app.repository;
+
+import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.Param;
 
-import co.edu.usbcali.banco.app.domain.Destino;
+import co.edu.usbcali.viajes.app.domain.Destino;
 
 /**
  * @author cesarlopez
@@ -18,4 +20,11 @@ public interface DestinoRepository extends JpaRepository<Destino, Integer> {
 	 */
 	public Destino findByCodigo(@Param("pCodigo") String codigo);
 	
+
+	/**
+	 * 
+	 * @param usuCreador
+	 * @return
+	 */
+	public List<Destino> findByTipoDestino_Codigo(String usuCreador);
 }

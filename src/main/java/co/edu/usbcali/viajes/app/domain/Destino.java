@@ -1,4 +1,4 @@
-package co.edu.usbcali.banco.app.domain;
+package co.edu.usbcali.viajes.app.domain;
 
 import java.io.Serializable;
 import java.util.Date;
