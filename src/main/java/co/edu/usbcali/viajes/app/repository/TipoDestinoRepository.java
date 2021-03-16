@@ -74,6 +74,9 @@ public interface TipoDestinoRepository extends JpaRepository<TipoDestino, Intege
      */
 	public Page<TipoDestino> findByEstado(String estado, Pageable pageable);
 	
+	
+	
+	
 	/**
 	 * 
 	 * @param estado
