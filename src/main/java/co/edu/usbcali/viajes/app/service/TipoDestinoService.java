@@ -15,7 +15,7 @@ public interface TipoDestinoService{
 	
 	/**
 	 * 
-	 * @return List<TipoDestino>
+	 * @return
 	 * @throws Exception
 	 */
 	public List<TipoDestino> consultarTiposDestino() throws Exception;
@@ -26,7 +26,7 @@ public interface TipoDestinoService{
 	 * @return
 	 * @throws Exception
 	 */
-	public TipoDestino buscarPorId(Integer id) throws Exception;
+	public TipoDestino buscarPorId(Integer id) throws Exception ;
 	
 	/**
 	 * 
@@ -40,79 +40,22 @@ public interface TipoDestinoService{
 	 * @return
 	 * @throws Exception
 	 */
-	public Long consultarCantidadTiposDestino() throws Exception ;
-	
-	/**
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public List<TipoDestino> encontrarPorIdsTipoDestino() throws Exception;
-	
-	/**
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public boolean existeIdTipoDestino() throws Exception;
-	
-	
-	/**
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
 	public List<TipoDestino> buscarTodosTiposDestinoOrdenados() throws Exception;
 	
 	/**
 	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public Page<TipoDestino> consultarTiposDestinoConPaginacion() throws Exception;
-
-	/**
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public Page<TipoDestino> consultarTiposDestinoConPaginacionOrdenado() throws Exception;
-	
-	/**
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public TipoDestino consultaTipoDestinoPorCodigo() throws Exception;
-	
-	/**
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public List<TipoDestino> consultaTiposDestinoActivos() throws Exception;
-	
-	/**
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public List<TipoDestino> consultaTiposDestinoPorEstadoPorCodigo() throws Exception;
-	
-	/**
-	 * 
-	 * @return
-	 * @throws Exception
-	 */
-	public List<TipoDestino> consultarTipoDestinosPorFechaCreacionPorRango() throws Exception;
-	
-	/**
-	 * 
 	 * @param codigo
-	 * @param pagina
-	 * @param cantidadRegistros
 	 * @return
 	 * @throws Exception
 	 */
-	public List<TipoDestino> consultaTipoDestinoCodigoPaginado(String codigo, Integer pagina, Integer cantidadRegistros) throws Exception;
+	public TipoDestino consultaTipoDestinoPorCodigo(String codigo) throws Exception;
+	
+	/**
+	 * 
+	 * @param estado
+	 * @param codigo
+	 * @return
+	 * @throws Exception
+	 */
+	public List<TipoDestino> consultaTiposDestinoPorEstadoPorCodigo(String estado, String codigo) throws Exception;
 }

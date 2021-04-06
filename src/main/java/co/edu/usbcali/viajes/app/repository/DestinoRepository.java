@@ -23,6 +23,14 @@ public interface DestinoRepository extends JpaRepository<Destino, Integer> {
 
 	/**
 	 * 
+	 * @param codigo
+	 * @param estado
+	 * @return
+	 */
+	public Destino findByCodigoAndEstado(@Param("pCodigo") String codigo, @Param("pEstado") String estado);
+	
+	/**
+	 * 
 	 * @param usuCreador
 	 * @return
 	 */

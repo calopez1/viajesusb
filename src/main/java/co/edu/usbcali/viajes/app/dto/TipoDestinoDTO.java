@@ -31,8 +31,7 @@ public class TipoDestinoDTO implements Serializable{
 	private String usuCreador;
 	private String usuModificador;
 	private String estado;
-	
-	
+
 	
 	/**
 	 * @param idTide

@@ -1,3 +1,4 @@
+
 package co.edu.usbcali.viajes.app.domain;
 
 import java.io.Serializable;

@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import co.edu.usbcali.viajes.app.domain.TipoDestino;
@@ -19,7 +20,7 @@ import co.edu.usbcali.viajes.app.repository.TipoDestinoRepository;
 
 @Scope("singleton")
 @Service
-public class TipoDestinoImpl implements TipoDestinoService{
+public class TipoDestinoServiceImpl implements TipoDestinoService{
 
 	
 	@Autowired
@@ -34,10 +35,6 @@ public class TipoDestinoImpl implements TipoDestinoService{
 		//Se consulta todos los tipos de destino
 		List<TipoDestino> lstTipoDestino = tipoDestinoRepository.findAll();
 	
-		if(lstTipoDestino.isEmpty()) {
-			throw new Exception("No se encontraron tipos de destino");
-		}
-		
 		return lstTipoDestino;
 	}
 
@@ -60,82 +57,62 @@ public class TipoDestinoImpl implements TipoDestinoService{
 			}else {
 				throw new Exception("No se encontró un tipo de destino con id "+id);
 			}
-	
 	}
-
 	
 	@Override
 	public void eliminarTipoDestino(TipoDestino tipoDestino) throws Exception {
 		
+		//Se valida que el tipo de destino a eliminar se ingrese
+		if(tipoDestino == null) {
+			throw new Exception("Se debe ingresar un tipo destino a eliminar");
+		}
 		
+		//Se valida que el tipo de destino venga con su llave primaria
+		if(tipoDestino.getIdTide() == null) {
+			throw new Exception("El tipo destino a eliminar debe tener un identificador");
+		}
 		
-	}
+		tipoDestinoRepository.deleteById(tipoDestino.getIdTide());
 
-	@Override
-	public Long consultarCantidadTiposDestino() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
 	}
-
-	@Override
-	public List<TipoDestino> encontrarPorIdsTipoDestino() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean existeIdTipoDestino() throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
+	
 	@Override
 	public List<TipoDestino> buscarTodosTiposDestinoOrdenados() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+		
+		 //Se consulta los tipos de destino ordenados por codigo
+		List<TipoDestino> tiposDestino = tipoDestinoRepository.findAll(Sort.by("codigo").descending());
+		
+		return tiposDestino;
+	}
+
+	
+	@Override
+	public TipoDestino consultaTipoDestinoPorCodigo(String codigo) throws Exception {
+		
+		//Se valida que se ingrese un código
+		if(codigo == null || codigo.trim().equals("")) {
+			throw new Exception("Se debe ingresar un codigo del tipo destino");
+		}		
+		
+		return tipoDestinoRepository.findByCodigo(codigo);
 	}
 
 	@Override
-	public Page<TipoDestino> consultarTiposDestinoConPaginacion() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Page<TipoDestino> consultarTiposDestinoConPaginacionOrdenado() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public TipoDestino consultaTipoDestinoPorCodigo() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<TipoDestino> consultaTiposDestinoActivos() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<TipoDestino> consultaTiposDestinoPorEstadoPorCodigo() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<TipoDestino> consultarTipoDestinosPorFechaCreacionPorRango() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<TipoDestino> consultaTipoDestinoCodigoPaginado(String codigo, Integer pagina, Integer cantidadRegistros)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
+	public List<TipoDestino> consultaTiposDestinoPorEstadoPorCodigo(String estado, String codigo) throws Exception {
+		
+		//Se valida que se ingrese un estado
+		if(estado == null || estado.trim().equals("")) {
+			throw new Exception("Se debe ingresar un estado");
+		}
+		
+		//Se valida que se ingrese un código
+		if(codigo == null || codigo.trim().equals("")) {
+			throw new Exception("Se debe ingresar un código");
+		}
+		
+		//Retorna la lista resultante de la consulta
+		return tipoDestinoRepository.findByCodigoAndEstadoOrderByCodigoDesc(codigo,estado);
+		
 	}
 
 
